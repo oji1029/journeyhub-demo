@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102b46" />
+  <title>JourneyHub — Informasi Perjalanan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="toast" class="toast" role="status"></div>
+  <main id="app" class="app-shell">
+    <section id="authView" class="auth-view">
+      <div class="auth-visual">
+        <div class="brand"><span class="brand-mark">J</span><span>journey<span class="brand-light">hub</span></span></div>
+        <div class="visual-copy">
+          <span class="eyebrow">YOUR TRIP, ONE PLACE</span>
+          <h1>Every journey<br>has a story.</h1>
+          <p>Semua informasi perjalanan dan agenda kegiatan, tersusun rapi dalam satu tempat.</p>
+        </div>
+        <div class="visual-footer"><span>✦</span> Travel information made simple</div>
+      </div>
+      <div class="auth-panel">
+        <div class="mobile-brand brand"><span class="brand-mark">J</span><span>journey<span class="brand-light">hub</span></span></div>
+        <div class="auth-card">
+          <div class="auth-heading">
+            <span class="eyebrow" id="authEyebrow">WELCOME ABOARD</span>
+            <h2 id="authTitle">Buat akun peserta</h2>
+            <p id="authSubtitle">Daftar untuk mengakses informasi perjalanan Anda.</p>
+          </div>
+          <form id="registerForm" class="form-stack">
+            <label>Nama lengkap<input name="name" type="text" placeholder="Contoh: Andi Pratama" required minlength="3"></label>
+            <label>Departemen<input name="department" type="text" placeholder="Contoh: Marketing" required></label>
+            <label>Nomor HP<input name="phone" type="tel" inputmode="tel" placeholder="08xxxxxxxxxx" required minlength="8"></label>
+            <label>Password<input name="password" type="password" placeholder="Minimal 6 karakter" required minlength="6"></label>
+            <button class="btn btn-primary btn-full" type="submit">Daftar sebagai peserta <span>→</span></button>
+          </form>
+          <form id="loginForm" class="form-stack hidden">
+            <label>Nomor HP<input name="phone" type="tel" inputmode="tel" placeholder="Nomor HP terdaftar" required></label>
+            <label>Password<input name="password" type="password" placeholder="Masukkan password" required></label>
+            <button class="btn btn-primary btn-full" type="submit">Masuk ke akun <span>→</span></button>
+          </form>
+          <p class="auth-switch" id="authSwitch">Sudah punya akun? <button type="button" class="text-button" id="switchAuth">Masuk di sini</button></p>
+          <div class="demo-hint"><span class="hint-icon">i</span><div><strong>Mode demo interaktif</strong><br>Data tersimpan di browser perangkat ini. Jangan gunakan data pribadi asli.</div></div>
+          <button class="admin-entry" id="adminEntry" type="button">Masuk sebagai admin demo</button>
+        </div>
+        <p class="auth-legal">© 2026 JourneyHub · Demo konsep website informasi peserta</p>
+      </div>
+    </section>
+
+    <section id="participantView" class="portal hidden">
+      <header class="topbar">
+        <div class="brand dark-brand"><span class="brand-mark">J</span><span>journey<span class="brand-light">hub</span></span></div>
+        <div class="topbar-actions"><span class="live-dot"></span><span class="topbar-label">Portal Peserta</span><button class="avatar" id="userAvatar">A</button></div>
+      </header>
+      <div class="portal-content">
+        <section class="welcome-row"><div><span class="eyebrow">TRAVEL INFORMATION PORTAL</span><h1>Halo, <span id="participantName">Peserta</span> 👋</h1><p>Siap untuk perjalanan yang menyenangkan?</p></div><button class="logout-btn" data-logout>Keluar</button></section>
+        <section class="trip-hero">
+          <div class="trip-photo"></div><div class="trip-overlay"></div>
+          <div class="trip-content"><span class="trip-tag">✦ UPCOMING JOURNEY</span><h2 id="tripTitle">Explore the beauty of Bali</h2><p id="tripDescription">Perjalanan bersama, pengalaman tak terlupakan.</p><div class="trip-meta"><span>⌖ <b id="tripLocation">Bali, Indonesia</b></span><span>▦ <b id="tripDate">15–18 Desember 2026</b></span></div></div>
+        </section>
+        <section class="section-block">
+          <div class="section-heading"><div><span class="eyebrow">DON'T MISS A THING</span><h2>Informasi perjalanan</h2></div><span class="section-count">03 INFO</span></div>
+          <div class="info-grid" id="infoGrid"></div>
+        </section>
+        <section class="section-block">
+          <div class="section-heading"><div><span class="eyebrow">YOUR ITINERARY</span><h2>Agenda kegiatan</h2></div></div>
+          <div class="timeline" id="agendaList"></div>
+        </section>
+        <section class="section-block">
+          <div class="section-heading"><div><span class="eyebrow">STAY UPDATED</span><h2>Pengumuman</h2></div></div>
+          <div id="announcementList" class="announcement-list"></div>
+        </section>
+        <footer class="portal-footer"><div class="brand dark-brand"><span class="brand-mark">J</span><span>journey<span class="brand-light">hub</span></span></div><span>Have a wonderful journey ✦</span></footer>
+      </div>
+      <nav class="bottom-nav"><a class="active" href="#top"><span>⌂</span>Beranda</a><a href="#agenda"><span>▤</span>Agenda</a><a href="#announcements"><span>♧</span>Info</a></nav>
+    </section>
+
+    <section id="adminView" class="admin-view hidden">
+      <aside class="sidebar"><div class="brand"><span class="brand-mark">J</span><span>journey<span class="brand-light">hub</span></span></div><div class="side-label">WORKSPACE</div><a class="side-link active">▦ <span>Overview</span></a><a class="side-link">♙ <span>Peserta</span></a><a class="side-link">▤ <span>Konten perjalanan</span></a><div class="sidebar-bottom"><div class="admin-profile"><div class="admin-avatar">A</div><div><strong>Administrator</strong><small>Demo workspace</small></div></div><button data-logout class="side-logout">Keluar ↗</button></div></aside>
+      <div class="admin-main">
+        <header class="admin-top"><div><span class="eyebrow">WORKSPACE / OVERVIEW</span><h1>Dashboard admin</h1></div><span class="admin-chip"><i></i> Admin demo</span></header>
+        <div class="admin-intro"><div><h2>Selamat datang kembali!</h2><p>Kelola informasi perjalanan dan pantau peserta di sini.</p></div><span class="today-label">✦ JourneyHub Portal</span></div>
+        <div class="stats-grid"><article class="stat-card"><span>Total peserta</span><strong id="totalParticipants">0</strong><small>Terdaftar di demo ini</small></article><article class="stat-card"><span>Informasi aktif</span><strong>03</strong><small>Konten perjalanan</small></article><article class="stat-card"><span>Pengumuman</span><strong id="totalAnnouncements">02</strong><small>Informasi terbaru</small></article></div>
+        <section class="admin-card"><div class="admin-card-head"><div><span class="eyebrow">REGISTRATION</span><h2>Peserta terdaftar</h2></div><span class="section-count">DATA DEMO</span></div><div class="table-wrap"><table><thead><tr><th>Nama peserta</th><th>Departemen</th><th>Nomor HP</th><th>Status</th></tr></thead><tbody id="participantTable"></tbody></table></div></section>
+        <section class="admin-card"><div class="admin-card-head"><div><span class="eyebrow">CONTENT MANAGEMENT</span><h2>Perbarui informasi perjalanan</h2></div></div><form id="contentForm" class="content-form"><label>Judul perjalanan<input name="title" required></label><label>Lokasi<input name="location" required></label><label>Tanggal<input name="date" required></label><label class="full-field">Deskripsi<textarea name="description" rows="2" required></textarea></label><button class="btn btn-primary" type="submit">Simpan perubahan</button></form><p class="admin-note">Perubahan hanya tersimpan di browser ini untuk keperluan demonstrasi.</p></section>
+        <button class="logout-btn admin-logout" data-logout>Keluar dari admin</button>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
